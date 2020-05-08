@@ -2,7 +2,7 @@
 
 class Banco
 {
-    private static $dbNome = 'xwti04';
+    private static $dbNome = 'fbank';
     private static $dbHost = 'localhost:3306';
     private static $dbUsuario = 'root';
     private static $dbSenha = '';

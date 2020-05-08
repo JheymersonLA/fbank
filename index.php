@@ -1,3 +1,8 @@
+<?php
+    include 'banco.php';
+    $conexao = Banco::conectar();
+?>
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -19,6 +24,7 @@
 
         <!-- CSS Customizado -->
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        
 
         <!-- FontAwesome -->
         <script src="https://kit.fontawesome.com/f678e665a3.js" crossorigin="anonymous"></script>
@@ -53,6 +59,7 @@
                                 <!-- Cabeçalho -->
                                 <thead class="thead-light">
                                     <tr class="text-center">
+                                        <th scope="col" data-sort="Conta">Nº da Conta</th>
                                         <th scope="col" data-sort="Nome">Nome</th>
                                         <th scope="col" data-sort="Saldo">Saldo</th>
                                         <th scope="col" data-sort="Transferência">DOC/TED</th>
@@ -60,388 +67,129 @@
                                 </thead>
                                 <!-- Corpo -->
                                 <tbody class="list">
-                                    <!-- Conta da Giu -->
-                                    <tr>
-                                        <!-- Foto -->
+                                <?php
+                                    $sql = 'SELECT * FROM contas';
+                                    foreach($conexao->query($sql)as $row)
+                                    {
+                                        $modal = explode(" ",$row['nome'],-2);
+                                        $str = implode($modal);
+                                        echo '<tr>';
+                                        echo '
                                         <td>
+                                         <span class="name mb-0 text-sm">'. $row['conta'] . '</span>
+                                        </td>
+                                        ';
+                                        echo '<td>';
+                                        echo '
+                                        <div class="col">
                                             <div class="media align-items-center">
                                                 <a class="avatar rounded-circle mr-3">
-                                                    <img alt="Image placeholder" src="assets\images\Giu.jpg">
+                                                    <img alt="Image placeholder" src="'. $row['foto'] .'">
                                                 </a>
-                                                <div class="media-body">
-                                                    <span class="name mb-0 text-sm">Giulliany Lima Bezerra</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <!-- Saldo -->
-                                        <td>
-                                            R$ 1000
-                                        </td>
-                                        <!-- Botão -->
-                                        <td>
-                                            <button type="button" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#modal-giu">
-                                                <i class="fas fa-exchange-alt"></i>
-                                                <span>Transferir</span>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <!-- Conta do Jheymerson -->
-                                    <tr>
-                                        <!-- Foto -->
-                                        <td>
-                                            <div class="media align-items-center">
-                                                <a class="avatar rounded-circle mr-3">
-                                                    <img alt="Image placeholder" src="assets\images\Jheymerson.jpg">
-                                                </a>
-                                                <div class="media-body">
-                                                    <span class="name mb-0 text-sm">Jheymerson Lira Aranha</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <!-- Saldo -->
-                                        <td>
-                                            R$ 1000
-                                        </td>
-                                        <!-- Botão -->
-                                        <td>
-                                            <button type="button" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#modal-jheymerson">
-                                                <i class="fas fa-exchange-alt"></i>
-                                                <span>Transferir</span>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <!-- Conta do Klederson -->
-                                    <tr>
-                                        <!-- Foto -->
-                                        <td>
-                                            <div class="media align-items-center">
-                                                <a class="avatar rounded-circle mr-3">
-                                                    <img alt="Image placeholder" src="assets\images\Klederson.jpg">
-                                                </a>
-                                                <div class="media-body">
-                                                    <span class="name mb-0 text-sm">Klederson Rocha Soares</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <!-- Saldo -->
-                                        <td>
-                                            R$ 1000
-                                        </td>
-                                        <!-- Botão -->
-                                        <td>
-                                            <button type="button" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#modal-klederson">
-                                                <i class="fas fa-exchange-alt"></i>
-                                                <span>Transferir</span>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <!-- Conta da Stefani -->
-                                    <tr>
-                                        <!-- Foto -->
-                                        <td>
-                                            <div class="media align-items-center">
-                                                <a class="avatar rounded-circle mr-3">
-                                                    <img alt="Image placeholder" src="assets\images\Carol.jpg">
-                                                </a>
-                                                <div class="media-body">
-                                                    <span class="name mb-0 text-sm">Stefani Carol Almeida</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <!-- Saldo -->
-                                        <td>
-                                            R$ 1000
-                                        </td>
-                                        <!-- Botão -->
-                                        <td>
-                                            <button type="button" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#modal-stefani">
-                                                <i class="fas fa-exchange-alt"></i>
-                                                <span>Transferir</span>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                        ';
+                                        echo '<div class="media-body">';
+                                        echo '<span class="name mb-0 text-sm">'. $row['nome'] . '</span>';
+                                        echo '</div>';
+                                        echo '</td>';
+                                        echo '<td>';
+                                        echo '<span>'. $row['valor'] . '</span>';                      
+                                        echo '</td>';
+                                        echo '<td>';
+                                        echo '
+                                        <button type="button" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#'. $str .'">
+                                            <i class="fas fa-exchange-alt"></i>
+                                            <span>Transferir</span>
+                                        </button>
+                                        ';
+                                    }
+                                    Banco::desconectar();
+                                ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
+            <?php
+                $sql = 'SELECT * FROM contas';
+                foreach($conexao->query($sql)as $row)
+                {
+                    $modal = explode(" ",$row['nome'],-2);
+                    $str = implode($modal);
+                    echo '
+                    <div class="modal fade" id="'. $str .'">
+                        <div class="modal-dialog modal-dialog-centered modal">
+                            <div class="modal-content modal-danger">
+                                <!-- Modal - Cabeçalho -->   
+                                <div class="modal-header bg-gradient-success font-weight-bold">
+                                    <div class="mt-1 ">
+                                        <i class="fas fa-exchange-alt text-white"></i>
+                                        <span class="modal-title ml-3">Realizar tranferência</span>
+                                    </div>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">x</span>
+                                    </button>
+                                </div>
+                                <!-- Modal - Corpo -->
+                                <div class="modal-body bg-white mt-0">
+                                    <!-- DE -->
+                                    <div class="py-2 text-left">
+                                        <span class="font-weight-bold">De</span>
+                                        <div class="col">
+                                            <div class="media align-items-center pt-3">
+                                                <a class="avatar rounded-circle mr-3">
+                                                    <img alt="Image placeholder" src="'. $row['foto'] .'">
+                                                </a>
+                                                <div class="media-body">
+                                                    <span class="name mb-0 text-sm">'. $row['nome'] .'</span>
+                                                    <br>
+                                                    <span class="name mb-0 text-sm">'. $row['conta'] . '</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <form action="transaction.php" method="post">
+                                        <!-- PARA -->
+                                        <div class="py-2">
+                                            <span class="font-weight-bold">Para</span>
+                                            <div class="media pt-3">
+                                                <div class="col m-0">
+                                                    <div class="form-group mb-0">
+                                                        <input class="form-control" type="number" id="para">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- VALOR -->
+                                        <div class="py-2">
+                                            <span class="font-weight-bold">Valor</span>
+                                            <div class="media pt-3">
+                                                <div class="col">
+                                                    <div class="form-group mb-0">
+                                                        <input class="form-control" type="number" id="valor">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- Botão - Transferir -->
+                                <div class="modal-footer pt-0 mt-0">
+                                    <div class="col d-flex justify-content-center">
+                                        <button type="button" class="btn bg-gradient-success text-white">Transferir</button>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    ';
+                }
+                Banco::desconectar();
+            ?>
             <!-- Modal - Giu -->
-            <div class="modal fade" id="modal-giu">
-                <div class="modal-dialog modal-dialog-centered modal">
-                    <div class="modal-content modal-danger">
-                        <!-- Modal - Cabeçalho -->   
-                        <div class="modal-header bg-gradient-success font-weight-bold">
-                            <div class="mt-1 ">
-                                <i class="fas fa-exchange-alt text-white"></i>
-                                <span class="modal-title ml-3">Realizar tranferência</span>
-                            </div>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">x</span>
-                            </button>
-                        </div>
-                        <!-- Modal - Corpo -->
-                        <div class="modal-body bg-white mt-0">
-                            <!-- DE -->
-                            <div class="py-2 text-left">
-                                <span class="font-weight-bold">De</span>
-                                <div class="col">
-                                    <div class="media align-items-center pt-3">
-                                        <a class="avatar rounded-circle mr-3">
-                                            <img alt="Image placeholder" src="assets\images\Giu.jpg">
-                                        </a>
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Giulliany Lima Bezerra</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <form>
-                                <!-- PARA -->
-                                <div class="py-2">
-                                    <span class="font-weight-bold">Para</span>
-                                    <div class="media pt-3">
-                                        <div class="col m-0">
-                                            <div class="form-group mb-0">
-                                                <select class="form-control" id="exampleFormControlSelect1">
-                                                    <option>Jheymerson</option>
-                                                    <option>Klederson</option>
-                                                    <option>Steafani</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- VALOR -->
-                                <div class="py-2">
-                                    <span class="font-weight-bold">Valor</span>
-                                    <div class="media pt-3">
-                                        <div class="col">
-                                            <div class="form-group mb-0">
-                                                <input class="form-control" type="number" id="valor">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- Botão - Transferir -->
-                        <div class="modal-footer pt-0 mt-0">
-                            <div class="col d-flex justify-content-center">
-                                <button type="button" class="btn bg-gradient-success text-white">Transferir</button>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <!-- Modal - Jheymerson -->
-            <div class="modal fade" id="modal-jheymerson">
-                <div class="modal-dialog modal-dialog-centered modal">
-                    <div class="modal-content modal-danger">
-                        <!-- Modal - Cabeçalho -->     
-                        <div class="modal-header bg-gradient-success font-weight-bold">
-                            <div class="mt-1 ">
-                                <i class="fas fa-exchange-alt text-white"></i>
-                                <span class="modal-title ml-3">Realizar tranferência</span>
-                            </div>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">x</span>
-                            </button>
-                        </div>
-                        <!-- Modal - Corpo --> 
-                        <div class="modal-body bg-white mt-0">
-                            <!-- DE -->
-                            <div class="py-2 text-left">
-                                <span class="font-weight-bold">De</span>
-                                <div class="col">
-                                    <div class="media align-items-center pt-3">
-                                        <a class="avatar rounded-circle mr-3">
-                                            <img alt="Image placeholder" src="assets\images\Jheymerson.jpg">
-                                        </a>
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Jheymerson Lira Aranha</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <form>
-                                <!-- PARA -->
-                                <div class="py-2">
-                                    <span class="font-weight-bold">Para</span>
-                                    <div class="media pt-3">
-                                        <div class="col m-0">
-                                            <div class="form-group mb-0">
-                                                <select class="form-control" id="exampleFormControlSelect1">
-                                                    <option>Giu</option>
-                                                    <option>Klederson</option>
-                                                    <option>Steafani</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- VALOR -->
-                                <div class="py-2">
-                                    <span class="font-weight-bold">Valor</span>
-                                    <div class="media pt-3">
-                                        <div class="col">
-                                            <div class="form-group mb-0">
-                                                <input class="form-control" type="number" id="valor">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- Botão - Transferir -->
-                        <div class="modal-footer pt-0 mt-0">
-                            <div class="col d-flex justify-content-center">
-                                <button type="button" class="btn bg-gradient-success text-white">Transferir</button>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <!-- Modal - Klederson -->
-            <div class="modal fade" id="modal-klederson">
-                <div class="modal-dialog modal-dialog-centered modal">
-                    <div class="modal-content modal-danger">
-                        <!-- Modal - Cabeçalho -->    
-                        <div class="modal-header bg-gradient-success font-weight-bold">
-                            <div class="mt-1 ">
-                                <i class="fas fa-exchange-alt text-white"></i>
-                                <span class="modal-title ml-3">Realizar tranferência</span>
-                            </div>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">x</span>
-                            </button>
-                        </div>
-                        <!-- Modal - Corpo --> 
-                        <div class="modal-body bg-white mt-0">
-                            <!-- DE --> 
-                            <div class="py-2 text-left">
-                                <span class="font-weight-bold">De</span>
-                                <div class="col">
-                                    <div class="media align-items-center pt-3">
-                                        <a class="avatar rounded-circle mr-3">
-                                            <img alt="Image placeholder" src="assets\images\Klederson.jpg">
-                                        </a>
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Klederson Rocha Soares</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <form>
-                                <!-- PARA -->
-                                <div class="py-2">
-                                    <span class="font-weight-bold">Para</span>
-                                    <div class="media pt-3">
-                                        <div class="col m-0">
-                                            <div class="form-group mb-0">
-                                                <select class="form-control" id="exampleFormControlSelect1">
-                                                    <option>Giu</option>
-                                                    <option>Jheymerson</option>
-                                                    <option>Steafani</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- VALOR -->
-                                <div class="py-2">
-                                    <span class="font-weight-bold">Valor</span>
-                                    <div class="media pt-3">
-                                        <div class="col">
-                                            <div class="form-group mb-0">
-                                                <input class="form-control" type="number" id="valor">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- Botão - Transferir -->
-                        <div class="modal-footer pt-0 mt-0">
-                            <div class="col d-flex justify-content-center">
-                                <button type="button" class="btn bg-gradient-success text-white">Transferir</button>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <!-- Modal - Stefani -->
-            <div class="modal fade" id="modal-stefani">
-                <div class="modal-dialog modal-dialog-centered modal">
-                    <div class="modal-content modal-danger">    
-                        <!-- Modal - Cabeçalho -->    
-                        <div class="modal-header bg-gradient-success font-weight-bold">
-                            <div class="mt-1 ">
-                                <i class="fas fa-exchange-alt text-white"></i>
-                                <span class="modal-title ml-3">Realizar tranferência</span>
-                            </div>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">x</span>
-                            </button>
-                        </div>
-                        <!-- Modal - Corpo -->
-                        <div class="modal-body bg-white mt-0">
-                            <!-- DE -->
-                            <div class="py-2 text-left">
-                                <span class="font-weight-bold">De</span>
-                                <div class="col">
-                                    <div class="media align-items-center pt-3">
-                                        <a class="avatar rounded-circle mr-3">
-                                            <img alt="Image placeholder" src="assets\images\Carol.jpg">
-                                        </a>
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Stefani Carol Almeida</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <form>
-                                <!-- PARA -->
-                                <div class="py-2">
-                                    <span class="font-weight-bold">Para</span>
-                                    <div class="media pt-3">
-                                        <div class="col m-0">
-                                            <div class="form-group mb-0">
-                                                <select class="form-control" id="exampleFormControlSelect1">
-                                                    <option>Giu</option>
-                                                    <option>Jheymerson</option>
-                                                    <option>Klederson</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- VALOR -->
-                                <div class="py-2">
-                                    <span class="font-weight-bold">Valor</span>
-                                    <div class="media pt-3">
-                                        <div class="col">
-                                            <div class="form-group mb-0">
-                                                <input class="form-control" type="number" id="valor">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- Botão - Transferir -->
-                        <div class="modal-footer pt-0 mt-0">
-                            <div class="col d-flex justify-content-center">
-                                <button type="button" class="btn bg-gradient-success text-white">Transferir</button>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
+
+
         </div>
 
         <!-- JQuery 3.5.2-->
