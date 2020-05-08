@@ -26,6 +26,7 @@
     </head>
     <body>
         <div class="container pt-4">
+            <!-- Card - FBANK -->
             <div class="col d-flex justify-content-center">
                 <div class="row">
                     <div class="card">
@@ -42,114 +43,134 @@
                     </div>
                 </div>
             </div>
+            <!-- Card - Contas -->
             <div class="col d-flex justify-content-center">
                 <div class="row">
                     <div class="card">
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered align-items-center">
-                                    <thead class="thead-light">
-                                        <tr class="text-center">
-                                            <th scope="col" data-sort="Nome">Nome</th>
-                                            <th scope="col" data-sort="Saldo">Saldo</th>
-                                            <th scope="col" data-sort="Transferência">DOC/TED</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="list">
-                                        <tr>
-                                            <td>
-                                                <div class="media align-items-center">
-                                                    <a class="avatar rounded-circle mr-3">
-                                                        <img alt="Image placeholder" src="assets\images\Giu.jpg">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <span class="name mb-0 text-sm">Giulliany Lima Bezerra</span>
-                                                    </div>
+                            <!-- Tabela -->
+                            <table class="table table-bordered align-items-center">
+                                <!-- Cabeçalho -->
+                                <thead class="thead-light">
+                                    <tr class="text-center">
+                                        <th scope="col" data-sort="Nome">Nome</th>
+                                        <th scope="col" data-sort="Saldo">Saldo</th>
+                                        <th scope="col" data-sort="Transferência">DOC/TED</th>
+                                    </tr>
+                                </thead>
+                                <!-- Corpo -->
+                                <tbody class="list">
+                                    <!-- Conta da Giu -->
+                                    <tr>
+                                        <!-- Foto -->
+                                        <td>
+                                            <div class="media align-items-center">
+                                                <a class="avatar rounded-circle mr-3">
+                                                    <img alt="Image placeholder" src="assets\images\Giu.jpg">
+                                                </a>
+                                                <div class="media-body">
+                                                    <span class="name mb-0 text-sm">Giulliany Lima Bezerra</span>
                                                 </div>
-                                            </td>
-                                            <td>
-                                                R$ 1000
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#modal-giu">
-                                                    <i class="fas fa-exchange-alt"></i>
-                                                    <span>Transferir</span>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="media align-items-center">
-                                                    <a class="avatar rounded-circle mr-3">
-                                                        <img alt="Image placeholder" src="assets\images\Jheymerson.jpg">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <span class="name mb-0 text-sm">Jheymerson Lira Aranha</span>
-                                                    </div>
+                                            </div>
+                                        </td>
+                                        <!-- Saldo -->
+                                        <td>
+                                            R$ 1000
+                                        </td>
+                                        <!-- Botão -->
+                                        <td>
+                                            <button type="button" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#modal-giu">
+                                                <i class="fas fa-exchange-alt"></i>
+                                                <span>Transferir</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Conta do Jheymerson -->
+                                    <tr>
+                                        <!-- Foto -->
+                                        <td>
+                                            <div class="media align-items-center">
+                                                <a class="avatar rounded-circle mr-3">
+                                                    <img alt="Image placeholder" src="assets\images\Jheymerson.jpg">
+                                                </a>
+                                                <div class="media-body">
+                                                    <span class="name mb-0 text-sm">Jheymerson Lira Aranha</span>
                                                 </div>
-                                            </td>
-                                            <td>
-                                                R$ 1000
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#modal-jheymerson">
-                                                    <i class="fas fa-exchange-alt"></i>
-                                                    <span>Transferir</span>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="media align-items-center">
-                                                    <a class="avatar rounded-circle mr-3">
-                                                        <img alt="Image placeholder" src="assets\images\Klederson.jpg">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <span class="name mb-0 text-sm">Klederson Rocha Soares</span>
-                                                    </div>
+                                            </div>
+                                        </td>
+                                        <!-- Saldo -->
+                                        <td>
+                                            R$ 1000
+                                        </td>
+                                        <!-- Botão -->
+                                        <td>
+                                            <button type="button" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#modal-jheymerson">
+                                                <i class="fas fa-exchange-alt"></i>
+                                                <span>Transferir</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Conta do Klederson -->
+                                    <tr>
+                                        <!-- Foto -->
+                                        <td>
+                                            <div class="media align-items-center">
+                                                <a class="avatar rounded-circle mr-3">
+                                                    <img alt="Image placeholder" src="assets\images\Klederson.jpg">
+                                                </a>
+                                                <div class="media-body">
+                                                    <span class="name mb-0 text-sm">Klederson Rocha Soares</span>
                                                 </div>
-                                            </td>
-                                            <td>
-                                                R$ 1000
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#modal-klederson">
-                                                    <i class="fas fa-exchange-alt"></i>
-                                                    <span>Transferir</span>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="media align-items-center">
-                                                    <a class="avatar rounded-circle mr-3">
-                                                        <img alt="Image placeholder" src="assets\images\Carol.jpg">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <span class="name mb-0 text-sm">Stefani Carol Almeida</span>
-                                                    </div>
+                                            </div>
+                                        </td>
+                                        <!-- Saldo -->
+                                        <td>
+                                            R$ 1000
+                                        </td>
+                                        <!-- Botão -->
+                                        <td>
+                                            <button type="button" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#modal-klederson">
+                                                <i class="fas fa-exchange-alt"></i>
+                                                <span>Transferir</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Conta da Stefani -->
+                                    <tr>
+                                        <!-- Foto -->
+                                        <td>
+                                            <div class="media align-items-center">
+                                                <a class="avatar rounded-circle mr-3">
+                                                    <img alt="Image placeholder" src="assets\images\Carol.jpg">
+                                                </a>
+                                                <div class="media-body">
+                                                    <span class="name mb-0 text-sm">Stefani Carol Almeida</span>
                                                 </div>
-                                            </td>
-                                            <td>
-                                                R$ 1000
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#modal-stefani">
-                                                    <i class="fas fa-exchange-alt"></i>
-                                                    <span>Transferir</span>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                                            </div>
+                                        </td>
+                                        <!-- Saldo -->
+                                        <td>
+                                            R$ 1000
+                                        </td>
+                                        <!-- Botão -->
+                                        <td>
+                                            <button type="button" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#modal-stefani">
+                                                <i class="fas fa-exchange-alt"></i>
+                                                <span>Transferir</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- Modal - Giu -->
             <div class="modal fade" id="modal-giu">
                 <div class="modal-dialog modal-dialog-centered modal">
-                    <div class="modal-content modal-danger">        
+                    <div class="modal-content modal-danger">
+                        <!-- Modal - Cabeçalho -->   
                         <div class="modal-header bg-gradient-success font-weight-bold">
                             <div class="mt-1 ">
                                 <i class="fas fa-exchange-alt text-white"></i>
@@ -159,7 +180,9 @@
                                 <span aria-hidden="true">x</span>
                             </button>
                         </div>
+                        <!-- Modal - Corpo -->
                         <div class="modal-body bg-white mt-0">
+                            <!-- DE -->
                             <div class="py-2 text-left">
                                 <span class="font-weight-bold">De</span>
                                 <div class="col">
@@ -174,6 +197,7 @@
                                 </div>
                             </div>
                             <form>
+                                <!-- PARA -->
                                 <div class="py-2">
                                     <span class="font-weight-bold">Para</span>
                                     <div class="media pt-3">
@@ -188,6 +212,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- VALOR -->
                                 <div class="py-2">
                                     <span class="font-weight-bold">Valor</span>
                                     <div class="media pt-3">
@@ -200,6 +225,7 @@
                                 </div>
                             </form>
                         </div>
+                        <!-- Botão - Transferir -->
                         <div class="modal-footer pt-0 mt-0">
                             <div class="col d-flex justify-content-center">
                                 <button type="button" class="btn bg-gradient-success text-white">Transferir</button>
@@ -209,9 +235,11 @@
                     </div>
                 </div>
             </div>
+            <!-- Modal - Jheymerson -->
             <div class="modal fade" id="modal-jheymerson">
                 <div class="modal-dialog modal-dialog-centered modal">
-                    <div class="modal-content modal-danger">        
+                    <div class="modal-content modal-danger">
+                        <!-- Modal - Cabeçalho -->     
                         <div class="modal-header bg-gradient-success font-weight-bold">
                             <div class="mt-1 ">
                                 <i class="fas fa-exchange-alt text-white"></i>
@@ -221,7 +249,9 @@
                                 <span aria-hidden="true">x</span>
                             </button>
                         </div>
+                        <!-- Modal - Corpo --> 
                         <div class="modal-body bg-white mt-0">
+                            <!-- DE -->
                             <div class="py-2 text-left">
                                 <span class="font-weight-bold">De</span>
                                 <div class="col">
@@ -236,6 +266,7 @@
                                 </div>
                             </div>
                             <form>
+                                <!-- PARA -->
                                 <div class="py-2">
                                     <span class="font-weight-bold">Para</span>
                                     <div class="media pt-3">
@@ -250,6 +281,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- VALOR -->
                                 <div class="py-2">
                                     <span class="font-weight-bold">Valor</span>
                                     <div class="media pt-3">
@@ -262,6 +294,7 @@
                                 </div>
                             </form>
                         </div>
+                        <!-- Botão - Transferir -->
                         <div class="modal-footer pt-0 mt-0">
                             <div class="col d-flex justify-content-center">
                                 <button type="button" class="btn bg-gradient-success text-white">Transferir</button>
@@ -271,9 +304,11 @@
                     </div>
                 </div>
             </div>
+            <!-- Modal - Klederson -->
             <div class="modal fade" id="modal-klederson">
                 <div class="modal-dialog modal-dialog-centered modal">
-                    <div class="modal-content modal-danger">        
+                    <div class="modal-content modal-danger">
+                        <!-- Modal - Cabeçalho -->    
                         <div class="modal-header bg-gradient-success font-weight-bold">
                             <div class="mt-1 ">
                                 <i class="fas fa-exchange-alt text-white"></i>
@@ -283,7 +318,9 @@
                                 <span aria-hidden="true">x</span>
                             </button>
                         </div>
+                        <!-- Modal - Corpo --> 
                         <div class="modal-body bg-white mt-0">
+                            <!-- DE --> 
                             <div class="py-2 text-left">
                                 <span class="font-weight-bold">De</span>
                                 <div class="col">
@@ -298,6 +335,7 @@
                                 </div>
                             </div>
                             <form>
+                                <!-- PARA -->
                                 <div class="py-2">
                                     <span class="font-weight-bold">Para</span>
                                     <div class="media pt-3">
@@ -312,6 +350,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- VALOR -->
                                 <div class="py-2">
                                     <span class="font-weight-bold">Valor</span>
                                     <div class="media pt-3">
@@ -324,6 +363,7 @@
                                 </div>
                             </form>
                         </div>
+                        <!-- Botão - Transferir -->
                         <div class="modal-footer pt-0 mt-0">
                             <div class="col d-flex justify-content-center">
                                 <button type="button" class="btn bg-gradient-success text-white">Transferir</button>
@@ -333,9 +373,11 @@
                     </div>
                 </div>
             </div>
+            <!-- Modal - Stefani -->
             <div class="modal fade" id="modal-stefani">
                 <div class="modal-dialog modal-dialog-centered modal">
-                    <div class="modal-content modal-danger">        
+                    <div class="modal-content modal-danger">    
+                        <!-- Modal - Cabeçalho -->    
                         <div class="modal-header bg-gradient-success font-weight-bold">
                             <div class="mt-1 ">
                                 <i class="fas fa-exchange-alt text-white"></i>
@@ -345,7 +387,9 @@
                                 <span aria-hidden="true">x</span>
                             </button>
                         </div>
+                        <!-- Modal - Corpo -->
                         <div class="modal-body bg-white mt-0">
+                            <!-- DE -->
                             <div class="py-2 text-left">
                                 <span class="font-weight-bold">De</span>
                                 <div class="col">
@@ -360,6 +404,7 @@
                                 </div>
                             </div>
                             <form>
+                                <!-- PARA -->
                                 <div class="py-2">
                                     <span class="font-weight-bold">Para</span>
                                     <div class="media pt-3">
@@ -374,6 +419,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- VALOR -->
                                 <div class="py-2">
                                     <span class="font-weight-bold">Valor</span>
                                     <div class="media pt-3">
@@ -386,6 +432,7 @@
                                 </div>
                             </form>
                         </div>
+                        <!-- Botão - Transferir -->
                         <div class="modal-footer pt-0 mt-0">
                             <div class="col d-flex justify-content-center">
                                 <button type="button" class="btn bg-gradient-success text-white">Transferir</button>
