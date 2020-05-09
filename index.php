@@ -74,8 +74,8 @@
                                         $str = implode($modal);
                                         echo '<tr>';
                                         echo '
-                                        <td>
-                                         <span class="name mb-0 text-sm">'. $row['conta'] . '</span>
+                                        <td class="align-items-center">
+                                         <span class="name mb-0 text-sm ">'. $row['conta'] . '</span>
                                         </td>
                                         ';
                                         echo '<td>';
@@ -90,13 +90,13 @@
                                         echo '<span class="name mb-0 text-sm">'. $row['nome'] . '</span>';
                                         echo '</div>';
                                         echo '</td>';
-                                        echo '<td>';
+                                        echo '<td class="align-self-center">';
                                         echo '<span>R$ ' . $row['valor'] . '</span>';                      
                                         echo '</td>';
                                         echo '<td>';
                                         echo '
                                         <button type="button" class="btn btn-md btn-outline-warning" data-toggle="modal" data-target="#depos-'. $str .'">
-                                            <i class="fas fa-exchange-alt"></i>
+                                            <i class="fas fa-arrow-right"></i>
                                             <span>Depositar</span>
                                         </button>
                                         <button type="button" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#trans-'. $str .'">
@@ -112,36 +112,40 @@
                         </div>
                     </div>
                 </div>
-                <div class="col d-flex justify-content-center">
-                <div class="row">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="col">
-                            <div class="row">
-                                <div class="media-body">
-                                    <span class="name mb-0 font-24 font-weight-bold  text-success">$Calcular Rendimento$</span>
+                <div class="col-4 d-flex justify-content-center">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col">
+                                <div class="row">
+                                    <div class="media-body">
+                                        <span class="name mb-0 font-24 font-weight-bold text-success">$ Calcular Rendimento $</span>
+                                    </div>
+                                </div>
+                                <div class="mt-5">
+                                    <form action="" method="post" name="rendimento">
+                                        <label for="valor">Valor em dinheiro:</label>
+                                        <input class="form-control" type="text" name="valor" placeholder="R$"></input>
+                                        <div class="col d-flex justify-content-center">
+                                            <button type="submit" class="btn bg-gradient-primary btn-block text-white m-3" name="rendimento">Calcular</button>
+                                        </div>
+                                    </form>
+                                    <?php
+                                    if(isset($_POST['rendimento'])){
+                                        $valor = $_POST["valor"];
+                                        $calculo = $conexao->query('SELECT rendimento('.$valor.')')->fetch(PDO::FETCH_ASSOC);
+                                        $rendimento = implode(', ', $calculo);
+                                        echo '<label for="rendimento-mes">Rendimento ao mês:</label>';
+                                        echo '<span class="form-control mt-1" name="rendimento-mes">R$ '.$rendimento.'</span>';
+                                    }
+                                    ?>
                                 </div>
                             </div>
-                                <form action="" method="post" name="rendimento">
-                                    <input class="form-control" type="text" name="valor" placeholder="R$">
-                                    <button type="submit" class="btn bg-gradient-primary text-white" name="rendimento">Calcular</button>
-                                </form>
-                                <?php
-                                if(isset($_POST['rendimento'])){
-                                    $valor = $_POST["valor"];
-                                    $calculo = $conexao->query('SELECT rendimento('.$valor.')')->fetch(PDO::FETCH_ASSOC);
-                                    $rendimento = implode(', ', $calculo);
-                                    echo '<span class="form-control">'.$rendimento.'</span>';
-                                }
-                                ?>
-                            </div>
                         </div>
-                    </div>
-                </div>
+                    </div></div>
             </div>
             </div>
 
-            <!-- Modal - Giu -->
             <?php
                 $sql = 'SELECT * FROM contas';
                 foreach($conexao->query($sql)as $row)
@@ -156,7 +160,7 @@
                                     <!-- Modal - Cabeçalho -->   
                                     <div class="modal-header bg-gradient-warning font-weight-bold">
                                         <div class="mt-1 ">
-                                            <i class="fas fa-exchange-alt text-white"></i>
+                                            <i class="fas fa-arrow-right text-white"></i>
                                             <span class="modal-title ml-3">Depositar</span>
                                         </div>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -176,10 +180,10 @@
                                                         <span class="name mb-0 text-sm">'. $row['nome'] .'</span>
                                                         <br>
                                                         <input type="hidden" name="conta" value="'. $row['conta'].'">
-                                                        <span class="name mb-0 text-sm">'. $row['conta'] .'</span>
+                                                        <span class="name mb-0 text-sm">Conta: '. $row['conta'] .'</span>
                                                         <br>
                                                         <input type="hidden" name="saldo" value="'. $row['valor'].'">
-                                                        <span class="name mb-0 text-muted"> Saldo: '. $row['valor'] .'</span>
+                                                        <span class="name mb-0 text-muted font-14"> Saldo: '. $row['valor'] .'</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -190,7 +194,7 @@
                                             <div class="media pt-3">
                                                 <div class="col">
                                                     <div class="form-group mb-0">
-                                                        <input class="form-control" type="number" name="valor">
+                                                        <input class="form-control" type="number" name="valor" placeholder="R$">
                                                     </div>
                                                 </div>
                                             </div>
@@ -245,18 +249,20 @@
                                                         <span class="name mb-0 text-sm">'. $row['nome'] .'</span>
                                                         <br>
                                                         <input type="hidden" name="pagador" value="'. $row['conta'].'">
-                                                        <span class="name mb-0 text-sm">'. $row['conta'] .'</span>
+                                                        <span class="name mb-0 text-sm">Conta: '. $row['conta'] .'</span>
+                                                        <br>
+                                                        <span class="name mb-0 text-muted font-14"> Saldo: '. $row['valor'] .'</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                             <!-- PARA -->
                                             <div class="py-2">
-                                                <span class="font-weight-bold">Para</span>
+                                                <span class="font-weight-bold">Númrero da Conta:</span>
                                                 <div class="media pt-3">
                                                     <div class="col m-0">
                                                         <div class="form-group mb-0">
-                                                            <input class="form-control" type="number" name="favorecido">
+                                                            <input class="form-control" type="number" name="favorecido" value="000">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -267,7 +273,7 @@
                                                 <div class="media pt-3">
                                                     <div class="col">
                                                         <div class="form-group mb-0">
-                                                            <input class="form-control" type="number" name="valor">
+                                                            <input class="form-control" type="number" name="valor" placeholder="R$">
                                                         </div>
                                                     </div>
                                                 </div>
