@@ -72,37 +72,37 @@
                                     foreach($conexao->query($sql)as $row){
                                         $modal = explode(" ",$row['nome'],-2);
                                         $str = implode($modal);
-                                        echo '<tr>';
                                         echo '
-                                        <td class="align-items-center">
-                                         <span class="name mb-0 text-sm ">'. $row['conta'] . '</span>
-                                        </td>
-                                        ';
-                                        echo '<td>';
-                                        echo '
-                                        <div class="col">
-                                            <div class="media align-items-center">
-                                                <a class="avatar rounded-circle mr-3">
-                                                    <img alt="Image placeholder" src="'. $row['foto'] .'">
-                                                </a>
-                                        ';
-                                        echo '<div class="media-body">';
-                                        echo '<span class="name mb-0 text-sm">'. $row['nome'] . '</span>';
-                                        echo '</div>';
-                                        echo '</td>';
-                                        echo '<td class="align-self-center">';
-                                        echo '<span>R$ ' . $row['valor'] . '</span>';                      
-                                        echo '</td>';
-                                        echo '<td>';
-                                        echo '
-                                        <button type="button" class="btn btn-md btn-outline-warning" data-toggle="modal" data-target="#depos-'. $str .'">
-                                            <i class="fas fa-arrow-right"></i>
-                                            <span>Depositar</span>
-                                        </button>
-                                        <button type="button" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#trans-'. $str .'">
-                                            <i class="fas fa-exchange-alt"></i>
-                                            <span>Transferência</span>
-                                        </button>
+                                        <tr>
+                                            <td class="align-items-center">
+                                                <span class="name mb-0 text-sm ">'. $row['conta'] . '</span>
+                                            </td>
+                                            <td>
+                                                <div class="col">
+                                                    <div class="media align-items-center">
+                                                        <a class="avatar rounded-circle mr-3">
+                                                            <img alt="Image placeholder" src="'. $row['foto'] .'">
+                                                        </a>
+                                                    <div class="media-body">
+                                                        <span class="name mb-0 text-sm">'. $row['nome'] . '</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-self-center">
+                                                <span>R$ ' . $row['valor'] . '</span>                 
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-md btn-outline-warning" data-toggle="modal" data-target="#depos-'. $str .'">
+                                                    <i class="fas fa-arrow-right"></i>
+                                                    <span>Depositar</span>
+                                                </button>
+
+                                                <button type="button" class="btn btn-md btn-outline-success" data-toggle="modal" data-target="#trans-'. $str .'">
+                                                    <i class="fas fa-exchange-alt"></i>
+                                                    <span>Transferência</span>
+                                                </button>
+                                            </td>
+                                        </tr>
                                         ';
                                     }
                                     Banco::desconectar();
