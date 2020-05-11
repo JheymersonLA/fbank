@@ -296,102 +296,102 @@
                 Banco::desconectar();
             ?>
             <!-- Saldos -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="modal fade" id="saldos">
-                                <div class="modal-dialog modal-xl">
-                                    <div class="modal-content modal-danger">
-                                        <!-- Modal - Cabeçalho -->   
-                                        <div class="modal-header bg-gradient-info font-weight-bold">
-                                            <div class="mt-1 ">
-                                                <i class="fas fa-receipt text-white"></i>
-                                                <span class="modal-title ml-3">Extratos</span>
-                                            </div>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">x</span>
-                                            </button>
-                                        </div>
-                                        <!-- Modal - Corpo -->
-                                        <div class="modal-body bg-white mt-0">
-                                            <table class="table table-bordered align-items-center">
-                                            <!-- Cabeçalho -->
-                                                <thead class="thead-light">
-                                                    <tr class="text-center">
-                                                        <th scope="col" data-sort="Nome">Nome</th>
-                                                        <th scope="col" data-sort="Valor">Valor</th>
-                                                        <th scope="col" data-sort="Data">Data</th>
-                                                    </tr>
-                                                </thead>
-                                                <!-- Corpo -->
-                                                <tbody class="list">
-                                                <?php
-                                                    $sql = 'SELECT * FROM extrato';
-                                                    foreach($conexao->query($sql) as $row)
-                                                    {
-                                                        echo '
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="col">
-                                                                        <div class="media align-items-center">';
-                                                                            if (''. $row['autor'] . '' == 1):
-                                                                                echo'
-                                                                                <a class="avatar rounded-circle mr-3">
-                                                                                    <img alt="Image placeholder" src="assets\images\Giu.jpg">
-                                                                                </a>
-                                                                                <div class="media-body">
-                                                                                    <span class="name mb-0 text-sm">Giulliany Lima Bezerra</span>
-                                                                                </div>';
-
-                                                                            elseif (''. $row['autor'] . '' == 2):
-                                                                                echo'
-                                                                                <a class="avatar rounded-circle mr-3">
-                                                                                    <img alt="Image placeholder" src="assets\images\Jheymerson.jpg">
-                                                                                </a>
-                                                                                <div class="media-body">
-                                                                                    <span class="name mb-0 text-sm">Jheymerson Lira Aranha</span>
-                                                                                </div>';
-
-                                                                            elseif (''. $row['autor'] . '' == 3):
-                                                                                echo'
-                                                                                <a class="avatar rounded-circle mr-3">
-                                                                                    <img alt="Image placeholder" src="assets\images\Klederson.jpg">
-                                                                                </a>
-                                                                                <div class="media-body">
-                                                                                    <span class="name mb-0 text-sm">Klederson Rocha Soares</span>
-                                                                                </div>';
-
-                                                                            else:
-                                                                                echo'
-                                                                                <a class="avatar rounded-circle mr-3">
-                                                                                    <img alt="Image placeholder" src="assets\images\Carol.jpg">
-                                                                                </a>
-                                                                                <div class="media-body">
-                                                                                    <span class="name mb-0 text-sm">Stefani Carol</span>
-                                                                                </div>';
-                                                                            endif;
-                                                                    echo'
-                                                                </td>
-
-                                                                <td class="align-self-center">
-                                                                    <span>R$ ' . $row['valor'] . '</span>                 
-                                                                </td>
-                                                                <td>
-                                                                    <span> ' . $row['data'] . '</span>      
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                        ';
-                                                    }
-                                                        Banco::desconectar();
-                                                    ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="modal fade" id="saldos">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content modal-danger">
+                                <!-- Modal - Cabeçalho -->   
+                                <div class="modal-header bg-gradient-info font-weight-bold">
+                                    <div class="mt-1 ">
+                                        <i class="fas fa-receipt text-white"></i>
+                                        <span class="modal-title ml-3">Extratos</span>
                                     </div>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">x</span>
+                                    </button>
+                                </div>
+                                <!-- Modal - Corpo -->
+                                <div class="modal-body bg-white mt-0">
+                                    <table class="table table-bordered align-items-center">
+                                    <!-- Cabeçalho -->
+                                        <thead class="thead-light">
+                                            <tr class="text-center">
+                                                <th scope="col" data-sort="Nome">Nome</th>
+                                                <th scope="col" data-sort="Valor">Valor</th>
+                                                <th scope="col" data-sort="Data">Data</th>
+                                            </tr>
+                                        </thead>
+                                        <!-- Corpo -->
+                                        <tbody class="list">
+                                        <?php
+                                            $sql = 'SELECT * FROM extrato';
+                                            foreach($conexao->query($sql) as $row)
+                                            {
+                                                echo '
+                                                    <tr>
+                                                        <td>
+                                                            <div class="col">
+                                                                <div class="media align-items-center">';
+                                                                    if (''. $row['autor'] . '' == 1):
+                                                                        echo'
+                                                                        <a class="avatar rounded-circle mr-3">
+                                                                            <img alt="Image placeholder" src="assets\images\Giu.jpg">
+                                                                        </a>
+                                                                        <div class="media-body">
+                                                                            <span class="name mb-0 text-sm">Giulliany Lima Bezerra</span>
+                                                                        </div>';
+
+                                                                    elseif (''. $row['autor'] . '' == 2):
+                                                                        echo'
+                                                                        <a class="avatar rounded-circle mr-3">
+                                                                            <img alt="Image placeholder" src="assets\images\Jheymerson.jpg">
+                                                                        </a>
+                                                                        <div class="media-body">
+                                                                            <span class="name mb-0 text-sm">Jheymerson Lira Aranha</span>
+                                                                        </div>';
+
+                                                                    elseif (''. $row['autor'] . '' == 3):
+                                                                        echo'
+                                                                        <a class="avatar rounded-circle mr-3">
+                                                                            <img alt="Image placeholder" src="assets\images\Klederson.jpg">
+                                                                        </a>
+                                                                        <div class="media-body">
+                                                                            <span class="name mb-0 text-sm">Klederson Rocha Soares</span>
+                                                                        </div>';
+
+                                                                    else:
+                                                                        echo'
+                                                                        <a class="avatar rounded-circle mr-3">
+                                                                            <img alt="Image placeholder" src="assets\images\Carol.jpg">
+                                                                        </a>
+                                                                        <div class="media-body">
+                                                                            <span class="name mb-0 text-sm">Stefani Carol</span>
+                                                                        </div>';
+                                                                    endif;
+                                                            echo'
+                                                        </td>
+
+                                                        <td class="align-self-center">
+                                                            <span>R$ ' . $row['valor'] . '</span>                 
+                                                        </td>
+                                                        <td>
+                                                            <span> ' . $row['data'] . '</span>      
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                ';
+                                            }
+                                                Banco::desconectar();
+                                            ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
         </div>
 
         <!-- JQuery 3.5.2-->
