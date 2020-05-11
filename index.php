@@ -34,17 +34,13 @@
         <div class="container pt-4">
             <!-- Card - FBANK -->
             <div class="col d-flex justify-content-center">
-                <div class="row">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="media align-items-center">
-                                <a class="avatar rounded-circle mr-3">
-                                    <img alt="Image placeholder" src="assets\images\Fabio.jpg">
-                                </a>
-                                <div class="media-body">
-                                    <span class="name mb-0 font-24 font-weight-bold  text-success">$ FBANK $</span>
-                                </div>
-                            </div>
+                <div class="row mb-5 mt-3">
+                    <div class="media align-items-center">
+                        <a class="avatar rounded-circle mr-3">
+                            <img alt="Image placeholder" src="assets\images\Fabio.jpg">
+                        </a>
+                        <div class="media-body">
+                            <span class="name mb-0 font-24 font-weight-bold  text-success">$ FBANK $</span>
                         </div>
                     </div>
                 </div>
