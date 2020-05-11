@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09-Maio-2020 às 05:48
+-- Tempo de geração: 11-Maio-2020 às 21:45
 -- Versão do servidor: 10.4.11-MariaDB
 -- versão do PHP: 7.4.5
 
@@ -64,10 +64,33 @@ CREATE TABLE `contas` (
 --
 
 INSERT INTO `contas` (`idconta`, `nome`, `conta`, `valor`, `foto`) VALUES
-(1, 'Giulliany Lima Bezerra', '0001', 100, 'assets\\images\\Giu.jpg'),
-(2, 'Jheymerson Lira Aranha', '0002', 100, 'assets\\images\\Jheymerson.jpg'),
-(3, 'Klederson Rocha Soares', '0003', 200, 'assets\\images\\Klederson.jpg'),
-(4, 'Stefani Carol Almeida', '0004', 100, 'assets\\images\\Carol.jpg');
+(1, 'Giulliany Lima Bezerra', '0001', 0, 'assets\\images\\Giu.jpg'),
+(2, 'Jheymerson Lira Aranha', '0002', 0, 'assets\\images\\Jheymerson.jpg'),
+(3, 'Klederson Rocha Soares', '0003', 0, 'assets\\images\\Klederson.jpg'),
+(4, 'Stefani Carol', '0004', 0, 'assets\\images\\Carol.jpg');
+
+--
+-- Acionadores `contas`
+--
+DELIMITER $$
+CREATE TRIGGER `log` AFTER UPDATE ON `contas` FOR EACH ROW INSERT INTO transacoes VALUES(null, new.idconta,'atualiza', now(), new.valor, new.nome)
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura stand-in para vista `extrato`
+-- (Veja abaixo para a view atual)
+--
+CREATE TABLE `extrato` (
+`idtransacao` int(11)
+,`autor` int(11)
+,`acao` varchar(30)
+,`data` varchar(30)
+,`valor` float
+,`nome` varchar(15)
+);
 
 -- --------------------------------------------------------
 
@@ -77,10 +100,21 @@ INSERT INTO `contas` (`idconta`, `nome`, `conta`, `valor`, `foto`) VALUES
 
 CREATE TABLE `transacoes` (
   `idtransacao` int(11) NOT NULL,
-  `pagador` int(11) NOT NULL,
-  `favorecido` int(11) NOT NULL,
-  `valortransferencia` float NOT NULL
+  `autor` int(11) NOT NULL,
+  `acao` varchar(30) NOT NULL,
+  `data` varchar(30) NOT NULL,
+  `valor` float DEFAULT NULL,
+  `nome` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para vista `extrato`
+--
+DROP TABLE IF EXISTS `extrato`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `extrato`  AS  select `transacoes`.`idtransacao` AS `idtransacao`,`transacoes`.`autor` AS `autor`,`transacoes`.`acao` AS `acao`,`transacoes`.`data` AS `data`,`transacoes`.`valor` AS `valor`,`transacoes`.`nome` AS `nome` from `transacoes` ;
 
 --
 -- Índices para tabelas despejadas
@@ -96,9 +130,7 @@ ALTER TABLE `contas`
 -- Índices para tabela `transacoes`
 --
 ALTER TABLE `transacoes`
-  ADD PRIMARY KEY (`idtransacao`),
-  ADD KEY `favorecido` (`favorecido`),
-  ADD KEY `pagador` (`pagador`) USING BTREE;
+  ADD PRIMARY KEY (`idtransacao`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -108,24 +140,13 @@ ALTER TABLE `transacoes`
 -- AUTO_INCREMENT de tabela `contas`
 --
 ALTER TABLE `contas`
-  MODIFY `idconta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idconta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `transacoes`
 --
 ALTER TABLE `transacoes`
-  MODIFY `idtransacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Restrições para despejos de tabelas
---
-
---
--- Limitadores para a tabela `transacoes`
---
-ALTER TABLE `transacoes`
-  ADD CONSTRAINT `favorecido` FOREIGN KEY (`favorecido`) REFERENCES `contas` (`idconta`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `pagador` FOREIGN KEY (`pagador`) REFERENCES `contas` (`idconta`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  MODIFY `idtransacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
